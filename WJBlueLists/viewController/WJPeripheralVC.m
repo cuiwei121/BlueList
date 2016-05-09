@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"123";
+    self.title = @"首页";
     self.tableDataArray = [@[@"123",@"234",@"345",@"456"]mutableCopy];
     [self.baseTableVC reloadData];
 }

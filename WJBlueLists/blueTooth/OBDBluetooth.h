@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol OBDBluetoothDelegate
-- (void) reloadTableView:(NSMutableArray *) peripheralA;
+- (void) reloadTableView:(NSMutableArray *) peripheralA andRissArray:(NSMutableArray *)rissArray;
 - (void) checkBlueState:(BOOL)blueState;
 - (void) didConnectPeripheral;
 - (void) didDisconnectPeripheral;
@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL blueConnectState;
 @property (nonatomic, assign) BOOL blueState;
 @property (strong,nonatomic) NSMutableArray *peripherals;
+@property (nonatomic, strong) NSMutableArray *rissArray;
 @property (nonatomic, strong) id<OBDBluetoothDelegate> delegate;
 
 + (OBDBluetooth *)shareOBDBluetooth;

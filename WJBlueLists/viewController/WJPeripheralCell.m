@@ -30,7 +30,20 @@
 - (void)createCellView {
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.frame = CGRectMake(0, 1, SCREEN_WIDTH, 30);
+    _titleLabel.frame = CGRectMake(40, 0, SCREEN_WIDTH - 20, 40);
+    _titleLabel.font = [UIFont systemFontOfSize:20];
+    
+    
+    _identifierLabel = [[UILabel alloc]init];
+    [self.contentView addSubview:_identifierLabel];
+    _identifierLabel.frame = CGRectMake(40, 40, SCREEN_WIDTH - 20, 20);
+    _identifierLabel.font = [UIFont systemFontOfSize:13];
+    
+    _rissLabel = [[UILabel alloc]init];
+    [self.contentView addSubview:_rissLabel];
+    _rissLabel.frame = CGRectMake(10, 40, 30, 20);
+    _rissLabel.font = [UIFont systemFontOfSize:13];
+    
 }
 
 @end

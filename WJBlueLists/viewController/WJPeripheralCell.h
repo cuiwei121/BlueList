@@ -11,5 +11,7 @@
 @interface WJPeripheralCell : WJBaseCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *identifierLabel;
 
+@property (nonatomic, strong) UILabel *rissLabel;
 @end

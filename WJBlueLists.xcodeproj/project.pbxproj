@@ -21,6 +21,7 @@
 		24CD14491CD9A31B00E19F1B /* BluetoothPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14461CD9A31B00E19F1B /* BluetoothPeripheral.m */; };
 		24CD144A1CD9A31B00E19F1B /* OBDBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14481CD9A31B00E19F1B /* OBDBluetooth.m */; };
 		24CD144F1CD9B2C500E19F1B /* WJBaseCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */; };
+		24EA438D1CE1BAD000DC1C57 /* WJServerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		24CD144B1CD9A3A600E19F1B /* blue_per.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blue_per.pch; sourceTree = "<group>"; };
 		24CD144D1CD9B2C500E19F1B /* WJBaseCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJBaseCV.h; sourceTree = "<group>"; };
 		24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJBaseCV.m; sourceTree = "<group>"; };
+		24EA438B1CE1BAD000DC1C57 /* WJServerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJServerVC.h; sourceTree = "<group>"; };
+		24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJServerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				2406C51A1CE02F9B00AF6102 /* WJPeripheralVC.m */,
 				2406C51F1CE033A100AF6102 /* WJPeripheralCell.h */,
 				2406C5201CE033A100AF6102 /* WJPeripheralCell.m */,
+				24EA438B1CE1BAD000DC1C57 /* WJServerVC.h */,
+				24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				2406C5211CE033A100AF6102 /* WJPeripheralCell.m in Sources */,
 				24CD144A1CD9A31B00E19F1B /* OBDBluetooth.m in Sources */,
 				2406C51B1CE02F9B00AF6102 /* WJPeripheralVC.m in Sources */,
+				24EA438D1CE1BAD000DC1C57 /* WJServerVC.m in Sources */,
 				2406C51E1CE031D100AF6102 /* WJBaseCell.m in Sources */,
 				24CD14191CD9A2C200E19F1B /* ViewController.m in Sources */,
 				24CD14161CD9A2C200E19F1B /* AppDelegate.m in Sources */,

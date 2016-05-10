@@ -81,7 +81,8 @@
     
     for (CBCharacteristic *c in [service characteristics])
     {
-        
+        self.readCharacteristic = c;
+        [self.peripheral setNotifyValue:YES forCharacteristic:self.readCharacteristic];
         LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@", c);
         
     }

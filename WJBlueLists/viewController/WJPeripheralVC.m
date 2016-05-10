@@ -67,7 +67,9 @@
     //LOG(@"%@",peripheral);
     
     cell.titleLabel.text = peripheral.name;
-    cell.identifierLabel.text = peripheral.identifier.UUIDString;
+    //peripheral.identifier.UUIDString
+//    NSString *idenfirierS = [NSString stringWithFormat:@"%d服务",[peripheral.services count]];
+    cell.identifierLabel.text =  peripheral.identifier.UUIDString;
     cell.rissLabel.text = [NSString stringWithFormat:@"%@",[self.rissArray objectAtIndex:indexPath.row]];
     
     

@@ -15,6 +15,10 @@
 - (void) didConnectPeripheral;
 - (void) didDisconnectPeripheral;
 - (void) didReceiveDataCenter:(NSString *) string;
+
+//设备的连接状态
+- (void)nextVC;
+
 @end
 
 
@@ -27,6 +31,8 @@
 @property (strong,nonatomic) NSMutableArray *peripherals;
 @property (nonatomic, strong) NSMutableArray *rissArray;
 @property (nonatomic, strong) id<OBDBluetoothDelegate> delegate;
+
+//服务  特征 数组
 
 + (OBDBluetooth *)shareOBDBluetooth;
 

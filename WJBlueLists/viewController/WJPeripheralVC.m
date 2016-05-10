@@ -9,6 +9,7 @@
 #import "WJPeripheralVC.h"
 #import "WJPeripheralCell.h"
 #import "OBDBluetooth.h"
+#import "WJServerVC.h"
 
 @interface WJPeripheralVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSMutableArray *rissArray;
@@ -80,7 +81,11 @@
 // Called after the user changes the selection.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CBPeripheral *peripheral = [self.tableDataArray objectAtIndex:indexPath.row];
+    
     [[OBDBluetooth shareOBDBluetooth]connectPeripheral:peripheral];
+    [self.navigationController pushViewController:[[WJServerVC alloc]init] animated:YES];
+    
+    
     
 }
 

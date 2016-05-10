@@ -7,8 +7,9 @@
 //
 
 #import "WJServerVC.h"
+#import "OBDBluetooth.h"
 
-@interface WJServerVC ()
+@interface WJServerVC ()<OBDBluetoothDelegate>
 
 @end
 
@@ -16,12 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"服务特征";
+    [OBDBluetooth shareOBDBluetooth].delegate = self;
+    
+    
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)nextVC {
+//刷新界面
+    
+    
+    LOG(@"刷新界面");
 }
 
 /*

@@ -8,6 +8,7 @@
 
 #import "WJServerVC.h"
 #import "OBDBluetooth.h"
+#import "WJPeripheralCell.h"
 
 @interface WJServerVC ()<OBDBluetoothDelegate>
 
@@ -19,10 +20,41 @@
     [super viewDidLoad];
     self.title = @"服务特征";
     [OBDBluetooth shareOBDBluetooth].delegate = self;
+    if ([OBDBluetooth shareOBDBluetooth].serCharArray) {
+        self.tableDataArray = [OBDBluetooth shareOBDBluetooth].serCharArray;
+    }
+    
     
     
     // Do any additional setup after loading the view.
 }
+
+
+
+
+#pragma mark - tableview 代理方法
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *identifier = @"peripheralCell";
+    WJPeripheralCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[WJPeripheralCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    CBCharacteristic *characteristic = [self.tableDataArray objectAtIndex:indexPath.row];
+    //LOG(@"%@",peripheral);
+    
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@",characteristic.UUID];
+    cell.identifierLabel.text = [NSString stringWithFormat:@"%d",characteristic.properties];
+   
+    
+    
+    
+    return cell;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

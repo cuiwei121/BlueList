@@ -48,6 +48,13 @@
     return  _rissArray;
 }
 
+- (NSMutableArray *)serCharArray {
+    if (!_serCharArray) {
+        _serCharArray = [NSMutableArray array];
+    }
+    return _serCharArray;
+}
+
 #pragma mark - 蓝牙设备代理方法
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central
@@ -275,6 +282,8 @@
         
         //LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);
         
+        
+        [self getLasterCharacteristic:peripheral andCharacteristic:c];
     }
 }
 
@@ -288,12 +297,15 @@
     
     if ([[characteristic value] bytes] ) {
         NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
-         LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
+        LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
+    }else {
+        LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
     }
     
+    [self getLasterCharacteristic:peripheral andCharacteristic:characteristic];
     
     
-    LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
+    
     
 }
 
@@ -311,6 +323,34 @@
     LOG(@"didUpdateNotificationStateForCharacteristic === %@    ",[characteristic value] );
 
 }
+
+
+
+//判断最后一个特征值 然后跳转
+- (void)getLasterCharacteristic:(CBPeripheral *)peripheral andCharacteristic:(CBCharacteristic *)characteristic {
+    //判断最后一个服务的最后一个特征值
+    CBService *lasterServer = [peripheral.services lastObject];
+    CBCharacteristic *lasterCharac = [lasterServer.characteristics lastObject];
+    
+    LOG(@"uuid laster= %@  %@",lasterCharac.UUID,characteristic.UUID);
+    if ([lasterCharac.UUID isEqual:characteristic.UUID]) {
+        [self arrayForServAndCha:peripheral];
+        [self.delegate nextVC];
+    }
+}
+
+//设置服务和特征的值
+- (void)arrayForServAndCha:(CBPeripheral *)peripheral {
+    for (int i = 0; i < [peripheral.services count]; i ++) {
+        CBService *serv = [peripheral.services objectAtIndex:i];
+        for (int j = 0; j < [serv.characteristics count]; j ++) {
+            CBCharacteristic *charater = [serv.characteristics objectAtIndex:j];
+            [self.serCharArray addObject:charater];
+            
+        }
+    }
+}
+
 
 #pragma mark - 设备的代理方法
 - (void) didReceiveData:(NSString *)string

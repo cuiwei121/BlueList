@@ -33,6 +33,7 @@
 @property (nonatomic, strong) id<OBDBluetoothDelegate> delegate;
 
 //服务  特征 数组
+@property (nonatomic, strong) NSMutableArray *serCharArray;
 
 + (OBDBluetooth *)shareOBDBluetooth;
 

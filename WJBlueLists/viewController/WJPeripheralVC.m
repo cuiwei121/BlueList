@@ -83,7 +83,7 @@
     CBPeripheral *peripheral = [self.tableDataArray objectAtIndex:indexPath.row];
     
     [[OBDBluetooth shareOBDBluetooth]connectPeripheral:peripheral];
-    [self.navigationController pushViewController:[[WJServerVC alloc]init] animated:YES];
+    
     
     
     
@@ -100,6 +100,15 @@
     
 }
 
+
+-(void)nextVC {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        LOG(@"界面跳转");
+         [self.navigationController pushViewController:[[WJServerVC alloc]init] animated:YES];
+    });
+    
+    
+}
 
 
 /*

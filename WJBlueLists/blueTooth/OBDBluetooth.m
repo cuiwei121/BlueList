@@ -122,13 +122,12 @@
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
      LOG(@"Did connect peripheral %@", peripheral.name);
+    self.peripheral = peripheral;
     //链接成功后  停止扫描
     [self.centerManager stopScan];
     peripheral.delegate = self;
     [peripheral discoverServices:nil];
     
-//    self.blueConnectState = YES;
-//    [self.delegate didConnectPeripheral];
     
 }
 
@@ -136,13 +135,6 @@
 {
     
     LOG(@"Did disconnect peripheral %@", peripheral.name);
-    
-//    self.blueConnectState = NO;
-    
-    
-    
-//    [self.delegate didDisconnectPeripheral];
-    
     
 }
 
@@ -248,19 +240,12 @@
     for (CBService *service in [peripheral services])
     {
         //[ast stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-         NSString *string = [NSString stringWithFormat:@"%@",service.UUID.data];
-        /*
-         @"@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$?^?'@#$%^&*()_+'\""
-         */
+        
+        NSString *string = [NSString stringWithFormat:@"%@",service.UUID.data];
         NSCharacterSet*set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
         NSString*trimmedString = [string stringByTrimmingCharactersInSet:set];
         trimmedString = [trimmedString uppercaseString];
-        
-        //
-        //去空格和换行
-        //ast1 = [ast1 stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-        //ast1 = [ast1 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+
         
         
         //LOG(@"CBServiceCBServiceCBService : %@ uuid =  %@  %@  string = %@", service,service.UUID.data,service.UUID,trimmedString);
@@ -302,9 +287,9 @@
     
     if ([[characteristic value] bytes] ) {
         NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
-        LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
+       // LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
     }else {
-        LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
+        //LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
     }
     
     [self getLasterCharacteristic:peripheral andCharacteristic:characteristic];
@@ -337,7 +322,7 @@
     CBService *lasterServer = [peripheral.services lastObject];
     CBCharacteristic *lasterCharac = [lasterServer.characteristics lastObject];
     
-    LOG(@"uuid laster= %@  %@",lasterCharac.UUID,characteristic.UUID);
+    //LOG(@"uuid laster= %@  %@",lasterCharac.UUID,characteristic.UUID);
     if ([lasterCharac.UUID isEqual:characteristic.UUID]) {
         [self arrayForServAndCha:peripheral];
         [self.delegate nextVC];

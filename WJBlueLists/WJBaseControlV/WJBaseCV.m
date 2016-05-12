@@ -27,7 +27,7 @@
 - (UITableView *)baseTableVC {
 
     if (!_baseTableVC) {
-        _baseTableVC = [[UITableView alloc]init];
+        _baseTableVC = [[UITableView alloc]initWithFrame:CGRectZero style: UITableViewStyleGrouped];
         _baseTableVC.dataSource = self;
         _baseTableVC.delegate = self;
         _baseTableVC.separatorStyle = UITableViewCellAccessoryNone;

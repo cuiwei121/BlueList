@@ -13,6 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "Masonry.h"
+#import "UIColor+WJColor.h"
 
 
 
@@ -30,5 +31,14 @@
 #else
 #define LOG(...);
 #endif
+
+/*
+ 设置字体
+ */
+#define WJFont(x) [UIFont fontWithName:@"HelveticaNeue" size:x]
+/*
+ 设置颜色
+ */
+#define WJForColor(x) [UIColor colorWithHexString:x]
 
 #endif /* blue_per_pch */

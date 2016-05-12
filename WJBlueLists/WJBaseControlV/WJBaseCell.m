@@ -28,9 +28,14 @@
         
         
         UIView *lineView = [[UIView alloc]init];
-        lineView.frame = CGRectMake(5,59, SCREEN_WIDTH - 10, 1);
         lineView.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:lineView];
+        
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.right.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).offset(10);
+            make.height.equalTo(@1);
+        }];
         
     }
     return self;

@@ -18,10 +18,16 @@
 
 @implementation WJPeripheralVC
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [OBDBluetooth shareOBDBluetooth].delegate = self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
-    [OBDBluetooth shareOBDBluetooth].delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {

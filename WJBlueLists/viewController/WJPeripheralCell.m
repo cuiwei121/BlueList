@@ -30,7 +30,12 @@
 - (void)createCellView {
     _titleLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_titleLabel];
-    _titleLabel.frame = CGRectMake(40, 0, SCREEN_WIDTH - 20, 40);
+    
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(40);
+        make.height.equalTo(@40);
+    }];
     _titleLabel.font = [UIFont systemFontOfSize:20];
     
     

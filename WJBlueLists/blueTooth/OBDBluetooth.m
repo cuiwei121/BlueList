@@ -257,6 +257,11 @@
         NSString*trimmedString = [string stringByTrimmingCharactersInSet:set];
         trimmedString = [trimmedString uppercaseString];
         
+        //
+        //去空格和换行
+        //ast1 = [ast1 stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+        //ast1 = [ast1 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        
         
         //LOG(@"CBServiceCBServiceCBService : %@ uuid =  %@  %@  string = %@", service,service.UUID.data,service.UUID,trimmedString);
         

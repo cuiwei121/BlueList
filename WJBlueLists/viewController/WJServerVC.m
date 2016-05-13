@@ -30,11 +30,13 @@
     }
     
     //创建头文件  tableview的头
-    UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 320)];
 //    sectionView.backgroundColor = [UIColor orangeColor];
     UILabel * label = [[UILabel alloc]init];
-    label.frame = CGRectMake(0, 0, 200, 40);
-    label.text = @"123456";
+    label.frame = CGRectMake(0, 0, SCREEN_WIDTH, 320);
+    label.numberOfLines = 0;
+    label.text = [NSString stringWithFormat:@"%@\n%@",[OBDBluetooth shareOBDBluetooth].peripheral.name,[OBDBluetooth shareOBDBluetooth].peripheral];
+    
     [sectionView addSubview:label];
     [self.baseTableVC setTableHeaderView:sectionView];
     

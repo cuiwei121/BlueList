@@ -89,10 +89,6 @@
     CBPeripheral *peripheral = [self.tableDataArray objectAtIndex:indexPath.row];
     
     [[OBDBluetooth shareOBDBluetooth]connectPeripheral:peripheral];
-    
-    
-    
-    
 }
 
 #pragma mark - 蓝牙代理方法

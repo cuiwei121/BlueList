@@ -10,6 +10,7 @@
 		2406C51B1CE02F9B00AF6102 /* WJPeripheralVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2406C51A1CE02F9B00AF6102 /* WJPeripheralVC.m */; };
 		2406C51E1CE031D100AF6102 /* WJBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2406C51D1CE031D100AF6102 /* WJBaseCell.m */; };
 		2406C5211CE033A100AF6102 /* WJPeripheralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2406C5201CE033A100AF6102 /* WJPeripheralCell.m */; };
+		24243BE21CE5CEF60005BA55 /* WJCharacteristicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24243BE11CE5CEF60005BA55 /* WJCharacteristicVC.m */; };
 		24B9F3A51CE466410032EAA4 /* UIColor+WJColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B9F3A41CE466410032EAA4 /* UIColor+WJColor.m */; };
 		24B9F3A81CE46A6A0032EAA4 /* WJServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B9F3A71CE46A6A0032EAA4 /* WJServerCell.m */; };
 		24CD14131CD9A2C200E19F1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14121CD9A2C200E19F1B /* main.m */; };
@@ -51,6 +52,8 @@
 		2406C51D1CE031D100AF6102 /* WJBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJBaseCell.m; sourceTree = "<group>"; };
 		2406C51F1CE033A100AF6102 /* WJPeripheralCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJPeripheralCell.h; sourceTree = "<group>"; };
 		2406C5201CE033A100AF6102 /* WJPeripheralCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJPeripheralCell.m; sourceTree = "<group>"; };
+		24243BE01CE5CEF60005BA55 /* WJCharacteristicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJCharacteristicVC.h; sourceTree = "<group>"; };
+		24243BE11CE5CEF60005BA55 /* WJCharacteristicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJCharacteristicVC.m; sourceTree = "<group>"; };
 		24B9F3A31CE466410032EAA4 /* UIColor+WJColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WJColor.h"; sourceTree = "<group>"; };
 		24B9F3A41CE466410032EAA4 /* UIColor+WJColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WJColor.m"; sourceTree = "<group>"; };
 		24B9F3A61CE46A6A0032EAA4 /* WJServerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJServerCell.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */,
 				24B9F3A61CE46A6A0032EAA4 /* WJServerCell.h */,
 				24B9F3A71CE46A6A0032EAA4 /* WJServerCell.m */,
+				24243BE01CE5CEF60005BA55 /* WJCharacteristicVC.h */,
+				24243BE11CE5CEF60005BA55 /* WJCharacteristicVC.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				2406C51E1CE031D100AF6102 /* WJBaseCell.m in Sources */,
 				24CD14191CD9A2C200E19F1B /* ViewController.m in Sources */,
 				24CD14161CD9A2C200E19F1B /* AppDelegate.m in Sources */,
+				24243BE21CE5CEF60005BA55 /* WJCharacteristicVC.m in Sources */,
 				24CD14491CD9A31B00E19F1B /* BluetoothPeripheral.m in Sources */,
 				24CD14131CD9A2C200E19F1B /* main.m in Sources */,
 			);

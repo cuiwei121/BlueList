@@ -10,6 +10,7 @@
 #import "OBDBluetooth.h"
 #import "WJServerCell.h"
 #import "WJPeripheralCell.h"
+#import "WJCharacteristicVC.h"
 
 @interface WJServerVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSArray *sectonArray;
@@ -21,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"服务特征";
+    self.title = @"服务";
     [OBDBluetooth shareOBDBluetooth].delegate = self;
     if ([OBDBluetooth shareOBDBluetooth].serCharArray) {
         self.sectonArray = [OBDBluetooth shareOBDBluetooth].peripheral.services;
@@ -73,10 +74,7 @@
     }else {
         return [NSString stringWithFormat:@"UUID：%@",service.UUID];
     }
-    
-    
-//    return nil;
-    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -86,17 +84,7 @@
         return 60;
     }
 }
-//
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIView * sectionView = [[UIView alloc]init];
-//    sectionView.backgroundColor = [UIColor orangeColor];
-//    UILabel * label = [[UILabel alloc]init];
-//    label.frame = CGRectMake(0, 0, 200, 40);
-//    label.text = @"123456";
-//    [sectionView addSubview:label];
-//    return sectionView;
-//
-//}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
    
@@ -156,10 +144,19 @@
         cell.nameLabel.text = [NSString stringWithFormat:@"%@",characteristic.UUID];
     }
 
-    cell.desLabel.text = [NSString stringWithFormat:@"属性：%d",characteristic.properties];
+    NSString *proString =[self propertiesForString: characteristic.properties];
+    cell.desLabel.text = [NSString stringWithFormat:@"属性：%@ ,%d",proString ,characteristic.properties];
    
 
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    WJCharacteristicVC * characVC = [[WJCharacteristicVC alloc]init];
+    [self.navigationController pushViewController:characVC animated:YES];
+   
 }
 
 
@@ -176,6 +173,56 @@
     
     
 }
+
+/*
+ enum {
+ 1 CBCharacteristicPropertyBroadcast = 0x01,//可广播  1
+ 2 CBCharacteristicPropertyRead = 0x02,//读  2
+ 4 CBCharacteristicPropertyWriteWithoutResponse = 0x04,//写无回复  4
+ 8 CBCharacteristicPropertyWrite = 0x08,//写
+ 16 CBCharacteristicPropertyNotify = 0x10,//订阅
+ 32 CBCharacteristicPropertyIndicate = 0x20,//声明
+ 64 CBCharacteristicPropertyAuthenticatedSignedWrites = 0x40,//通过验证的
+ 128 CBCharacteristicPropertyExtendedProperties = 0x80,//拓展
+ 
+ 
+ // 标识这个characteristic的属性是需要加密的通知
+ 256 CBCharacteristicPropertyNotifyEncryptionRequiredNS_ENUM_AVAILABLE(NA, 6_0)= 0x100,
+ // 标识这个characteristic的属性是需要加密的申明
+ 512 CBCharacteristicPropertyIndicateEncryptionRequiredNS_ENUM_AVAILABLE(NA, 6_0)= 0x200
+ };
+ */
+
+#pragma mark - 属性处理
+- (NSString *)propertiesForString:(int)proerities {
+    
+    NSString * proertiesString = nil;
+ 
+    
+    NSArray * stringArray = @[@"需要加密的申请",@"需要加密的通知",@"拓展",@"通过验证的",@"声明",@"订阅",@"可写",@"写无回复",@"可读",@"可广播"];
+    NSArray *dataArray = @[@512,@256,@128,@64,@32,@16,@8,@4,@2,@1];
+    for(int i = 0; i < [stringArray count]; i ++ ) {
+        if (proerities >= [[dataArray objectAtIndex:i] integerValue]) {
+            if (proertiesString) {
+                proertiesString = [NSString stringWithFormat:@"%@|%@",[stringArray objectAtIndex:i],proertiesString];
+            }else {
+                proertiesString = [stringArray objectAtIndex:i];
+            }
+            
+            proerities -= [[dataArray objectAtIndex:i] integerValue];
+            if (proerities <= 0) {
+                break;
+            }
+        }
+    }
+    
+ 
+   
+    
+    return proertiesString;
+}
+
+
 
 /*
 #pragma mark - Navigation

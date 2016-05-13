@@ -226,6 +226,50 @@
  2016-05-10 15:52:35.020 WJBlueLists[8978:2402718] Received data on a characteristic. === <00>   ==
  2016-05-10 15:52:35.021 WJBlueLists[8978:2402718] Received data on a characteristic. === <00>
  2016-05-10 15:53:11.999 WJBlueLists[8978:2402807] Did connect peripheral abeacon_5E36
+ 
+ 
+ 
+ //obdII
+ 
+ BCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146bd800, UUID = Manufacturer Name String, properties = 0x2, value = <49535343>, notifying = NO>    uuid =  <2a29>  Manufacturer Name String
+ 2016-05-13 09:54:32.207 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146cd220, UUID = Model Number String, properties = 0x2, value = <42543530 3530>, notifying = NO>    uuid =  <2a24>  Model Number String
+ 2016-05-13 09:54:32.208 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146d22d0, UUID = Serial Number String, properties = 0x2, value = <30303030>, notifying = NO>    uuid =  <2a25>  Serial Number String
+ 2016-05-13 09:54:32.212 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146cd390, UUID = Hardware Revision String, properties = 0x2, value = <35303530 5f535050 00000000 00>, notifying = NO>    uuid =  <2a27>  Hardware Revision String
+ 2016-05-13 09:54:32.215 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146bdc10, UUID = Firmware Revision String, properties = 0x2, value = <32303235 303231>, notifying = NO>    uuid =  <2a26>  Firmware Revision String
+ 2016-05-13 09:54:32.217 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x14670660, UUID = Software Revision String, properties = 0x2, value = <30303030>, notifying = NO>    uuid =  <2a28>  Software Revision String
+ 2016-05-13 09:54:32.221 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146a1700, UUID = System ID, properties = 0x2, value = <00000000 00000000>, notifying = NO>    uuid =  <2a23>  System ID
+ 2016-05-13 09:54:32.223 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146730c0, UUID = IEEE Regulatory Certification, properties = 0x2, value = <00010004 00000000>, notifying = NO>    uuid =  <2a2a>  IEEE Regulatory Certification
+ 2016-05-13 09:54:32.225 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1459f390, UUID = 49535343-6DAA-4D02-ABF6-19569ACA69FE, properties = 0xA, value = <00180018 00000048 00>, notifying = NO>    uuid =  <49535343 6daa4d02 abf61956 9aca69fe>  49535343-6DAA-4D02-ABF6-19569ACA69FE
+ 2016-05-13 09:54:32.228 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1459daf0, UUID = 49535343-ACA3-481C-91EC-D85E28A60318, properties = 0x18, value = (null), notifying = NO>    uuid =  <49535343 aca3481c 91ecd85e 28a60318>  49535343-ACA3-481C-91EC-D85E28A60318
+ 2016-05-13 09:54:32.231 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x14690040, UUID = FFF1, properties = 0x10, value = <0d3e>, notifying = NO>    uuid =  <fff1>  FFF1
+ 2016-05-13 09:54:32.233 WJBlueLists[10124:2712682] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146935a0, UUID = FFF2, properties = 0x8, value = (null), notifying = NO>    uuid =  <fff2>  FFF2
+ 
+ 
+   5DFA
+ 
+ CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146dc370, UUID = Manufacturer Name String, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a29>  Manufacturer Name String
+ 2016-05-13 09:55:33.166 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1469ee50, UUID = Model Number String, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a24>  Model Number String
+ 2016-05-13 09:55:33.167 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x14672e30, UUID = Firmware Revision String, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a26>  Firmware Revision String
+ 2016-05-13 09:55:33.169 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1468c0c0, UUID = Software Revision String, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a28>  Software Revision String
+ 2016-05-13 09:55:33.170 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1467f390, UUID = System ID, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a23>  System ID
+ 2016-05-13 09:55:33.172 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146b76d0, UUID = PnP ID, properties = 0x2, value = (null), notifying = NO>    uuid =  <2a50>  PnP ID
+ 2016-05-13 09:55:33.223 WJBlueLists[10124:2712797] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146d9bc0, UUID = Battery Level, properties = 0x12, value = (null), notifying = NO>    uuid =  <2a19>  Battery Level
+ 2016-05-13 09:55:33.494 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146b5460, UUID = 669A0C20-0008-0398-E411-D26820C58024, properties = 0x2, value = (null), notifying = NO>    uuid =  <669a0c20 00080398 e411d268 20c58024>  669A0C20-0008-0398-E411-D26820C58024
+ 2016-05-13 09:55:33.495 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1468a510, UUID = 669A0C20-0008-0398-E411-D26820C58025, properties =8, 0x value = (null), notifying = NO>    uuid =  <669a0c20 00080398 e411d268 20c58025>  669A0C20-0008-0398-E411-D26820C58025
+ 2016-05-13 09:55:33.497 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x14685fb0, UUID = 669A0C20-0008-0398-E411-D26820C58026, properties = 0x8, value = (null), notifying = NO>    uuid =  <669a0c20 00080398 e411d268 20c58026>  669A0C20-0008-0398-E411-D26820C58026
+ 2016-05-13 09:55:33.498 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146df5e0, UUID = 669A0C20-0008-0398-E411-D26820C58027, properties = 0x20, value = (null), notifying = NO>    uuid =  <669a0c20 00080398 e411d268 20c58027>  669A0C20-0008-0398-E411-D26820C58027
+ 2016-05-13 09:55:33.885 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1468b0b0, UUID = 8082CAA8-41A6-4021-91C6-56F9B954CC34, properties = 0xA, value = (null), notifying = NO>    uuid =  <8082caa8 41a64021 91c656f9 b954cc34>  8082CAA8-41A6-4021-91C6-56F9B954CC34
+ 2016-05-13 09:55:33.886 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x146a0b10, UUID = 724249F0-5EC3-4B5F-8804-42345AF08651, properties = 0xA, value = (null), notifying = NO>    uuid =  <724249f0 5ec34b5f 88044234 5af08651>  724249F0-5EC3-4B5F-8804-42345AF08651
+ 2016-05-13 09:55:33.887 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1469df50, UUID = 6C53DB25-47A1-45FE-A022-7C92FB334FD4, properties = 0x2, value = (null), notifying = NO>    uuid =  <6c53db25 47a145fe a0227c92 fb334fd4>  6C53DB25-47A1-45FE-A022-7C92FB334FD4
+ 2016-05-13 09:55:33.889 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1467e870, UUID = 9D84B9A3-000C-49D8-9183-855B673FDA31, properties = 0xA, value = (null), notifying = NO>    uuid =  <9d84b9a3 000c49d8 9183855b 673fda31>  9D84B9A3-000C-49D8-9183-855B673FDA31
+ 
+    0xA = 0x2 + 0x8
+    0xE = 0x2 + 0x8 + 0x4
+    0x12 = 0x10 + 0x02
+ 
+ 2016-05-13 09:55:33.890 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x14689150, UUID = 457871E8-D516-4CA1-9116-57D0B17B9CB2, properties = 0xE, value = (null), notifying = NO>    uuid =  <457871e8 d5164ca1 911657d0 b17b9cb2>  457871E8-D516-4CA1-9116-57D0B17B9CB2
+ 2016-05-13 09:55:33.892 WJBlueLists[10124:2712830] CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: <CBCharacteristic: 0x1469bf20, UUID = 5F78DF94-798C-46F5-990A-B3EB6A065C88, properties = 0x12, value = (null), notifying = NO>    uuid =  <5f78df94 798c46f5 990ab3eb 6a065c88>  5F78DF94-798C-46F5-990A-B3EB6A065C88
+ 
  */
 #pragma mark - 设备的代理方法
 
@@ -270,7 +314,7 @@
 //        [self.peripheral setNotifyValue:YES forCharacteristic:c];
         [self.peripheral readValueForCharacteristic:c];
         
-        //LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);
+        LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);
         
         
         [self getLasterCharacteristic:peripheral andCharacteristic:c];
@@ -340,6 +384,10 @@
         }
     }
 }
+
+
+
+
 
 
 #pragma mark - 设备的代理方法

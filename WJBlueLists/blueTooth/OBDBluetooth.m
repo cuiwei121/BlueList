@@ -86,9 +86,21 @@
     
 }
 
+
+/*
+ Did discover peripheral abeacon_5DFA
+ advertisementDATA = {
+ kCBAdvDataIsConnectable = 1;
+ kCBAdvDataLocalName = "abeacon_5DFA";
+ kCBAdvDataManufacturerData = <d200018e 1493b085 f8541364 c7e6cc88 9462df>;
+ kCBAdvDataServiceUUIDs =     (
+ FEF5
+ );
+ }
+ */
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    //LOG(@"Did discover peripheral %@", peripheral.name);
+    //LOG(@"Did discover peripheral %@  \n advertisementDATA = %@", peripheral.name,advertisementData);
     
     //判断数组中是否有设备
     NSInteger index = [self.peripherals indexOfObject:peripheral];

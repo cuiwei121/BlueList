@@ -24,10 +24,10 @@
     [super viewDidLoad];
     self.title = @"服务";
     [OBDBluetooth shareOBDBluetooth].delegate = self;
-    if ([OBDBluetooth shareOBDBluetooth].serCharArray) {
+//    if ([OBDBluetooth shareOBDBluetooth].serCharArray) {
         self.sectonArray = [OBDBluetooth shareOBDBluetooth].peripheral.services;
  
-    }
+//    }
     
     //创建头文件  tableview的头
     UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 320)];
@@ -147,16 +147,29 @@
     }
 
     NSString *proString =[self propertiesForString: characteristic.properties];
-    cell.desLabel.text = [NSString stringWithFormat:@"属性：%@ ,%d",proString ,characteristic.properties];
+    
+    NSString * valueString = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:characteristic.UUID];
+    if (valueString) {
+        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,valueString];
+    }else {
+        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+    }
+    //cell.desLabel.text = [NSString stringWithFormat:@"属性：%@ ,%d  %@",proString ,characteristic.properties,valueString];
    
-
+ 
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
+    
+    CBService *service = [self.sectonArray objectAtIndex:indexPath.section];
+    NSArray *characArray = service.characteristics;
     WJCharacteristicVC * characVC = [[WJCharacteristicVC alloc]init];
+    characVC.characteristic =[characArray objectAtIndex:indexPath.row];
+    
+    
     [self.navigationController pushViewController:characVC animated:YES];
    
 }
@@ -217,14 +230,45 @@
             }
         }
     }
-    
- 
-   
+
     
     return proertiesString;
 }
 
-
+//使用位与运算  http://lecason.com/2015/08/19/Objective-C-Find-Conbine/
+-(void)logCharacteristicProperties:(CBCharacteristicProperties)properties
+{
+    if (properties & CBCharacteristicPropertyBroadcast) {
+        NSLog(@"CBCharacteristicPropertyBroadcast");
+    }
+    if (properties & CBCharacteristicPropertyRead) {
+        NSLog(@"CBCharacteristicPropertyRead");
+    }
+    if (properties & CBCharacteristicPropertyWriteWithoutResponse) {
+        NSLog(@"CBCharacteristicPropertyWriteWithoutResponse");
+    }
+    if (properties & CBCharacteristicPropertyWrite) {
+        NSLog(@"CBCharacteristicPropertyWrite");
+    }
+    if (properties & CBCharacteristicPropertyNotify) {
+        NSLog(@"CBCharacteristicPropertyNotify");
+    }
+    if (properties & CBCharacteristicPropertyIndicate) {
+        NSLog(@"CBCharacteristicPropertyIndicate");
+    }
+    if (properties & CBCharacteristicPropertyAuthenticatedSignedWrites) {
+        NSLog(@"CBCharacteristicPropertyAuthenticatedSignedWrites");
+    }
+    if (properties & CBCharacteristicPropertyExtendedProperties) {
+        NSLog(@"CBCharacteristicPropertyExtendedProperties");
+    }
+    if (properties & CBCharacteristicPropertyNotifyEncryptionRequired) {
+        NSLog(@"CBCharacteristicPropertyNotifyEncryptionRequired");
+    }
+    if (properties & CBCharacteristicPropertyIndicateEncryptionRequired) {
+        NSLog(@"CBCharacteristicPropertyIndicateEncryptionRequired");
+    }
+}
 
 /*
 #pragma mark - Navigation

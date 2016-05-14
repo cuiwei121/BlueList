@@ -34,6 +34,7 @@
 }
 
 
+#pragma mark - 属性 懒加载
 - (NSMutableArray *)peripherals {
     if (!_peripherals) {
         _peripherals = [[NSMutableArray alloc]init];
@@ -53,6 +54,13 @@
         _serCharArray = [NSMutableArray array];
     }
     return _serCharArray;
+}
+
+- (NSMutableDictionary *)readDataDic {
+    if (!_readDataDic) {
+        _readDataDic = [NSMutableDictionary dictionary];
+    }
+    return _readDataDic;
 }
 
 #pragma mark - 蓝牙设备代理方法
@@ -75,7 +83,6 @@
             //蓝牙状态
             self.blueConnectState = NO;
             self.blueState = NO;
-            [self.delegate checkBlueState:NO];
             
             break;
             
@@ -119,15 +126,6 @@
         //刷新tableView
         [self.delegate reloadTableView:self.peripherals andRissArray:self.rissArray];
     }
-    
-    
-    //判断是否已经连接过   蓝牙设备
-//    if ([peripheral.name isEqualToString:@"OBDII"]) {
-//        self.peripheral = peripheral;
-//        self.peripheral.delegate = self;
-//        [self.centerManager stopScan];
-//        [self.centerManager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnDisconnectionKey: [NSNumber numberWithBool:YES]}];
-//    }
 }
 
 
@@ -150,7 +148,7 @@
     
 }
 
-
+#pragma mark - 对外方法
 - (void)connectPeripheral:(CBPeripheral *)peripheral {
     self.peripheral = peripheral;
     self.peripheral.delegate = self;
@@ -168,6 +166,18 @@
     [self.centerManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@YES}];
 }
 
+//读数据
+- (void)readCharacteristicValue:(CBCharacteristic *)characteristic {
+    [self.peripheral readValueForCharacteristic:characteristic];
+}
+
+//写数据
+//[self.peripheral writeValue:data forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+- (void)writeValue:(NSString *)writeS andCharacteristic:(CBCharacteristic *)characteristic {
+    
+    NSData *data = [NSData dataWithBytes:writeS.UTF8String length:writeS.length];
+    [self.peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+}
 
 /*
  CBServiceCBServiceCBService : <CBService: 0x15691460, isPrimary = YES, UUID = Device Information> uuid =  <180a>  Device Information  string = 180A
@@ -297,14 +307,11 @@
     {
         //[ast stringByReplacingOccurrencesOfString:@" " withString:@""];
         
-        NSString *string = [NSString stringWithFormat:@"%@",service.UUID.data];
-        NSCharacterSet*set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
-        NSString*trimmedString = [string stringByTrimmingCharactersInSet:set];
-        trimmedString = [trimmedString uppercaseString];
-
-        
-        
-        //LOG(@"CBServiceCBServiceCBService : %@ uuid =  %@  %@  string = %@", service,service.UUID.data,service.UUID,trimmedString);
+        //        NSString *string = [NSString stringWithFormat:@"%@",service.UUID.data];
+        //        NSCharacterSet*set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
+        //        NSString*trimmedString = [string stringByTrimmingCharactersInSet:set];
+        //        trimmedString = [trimmedString uppercaseString];
+        //        //LOG(@"CBServiceCBServiceCBService : %@ uuid =  %@  %@  string = %@", service,service.UUID.data,service.UUID,trimmedString);
         
         
         [self.peripheral discoverCharacteristics:nil forService:service];
@@ -323,11 +330,10 @@
     for (CBCharacteristic *c in [service characteristics])
     {
      
-//        [self.peripheral setNotifyValue:YES forCharacteristic:c];
+        //        [self.peripheral setNotifyValue:YES forCharacteristic:c];
         [self.peripheral readValueForCharacteristic:c];
         
-        LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);
-        
+        //        LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);
         
         [self getLasterCharacteristic:peripheral andCharacteristic:c];
     }
@@ -343,15 +349,25 @@
     
     if ([[characteristic value] bytes] ) {
         NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
-       // LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
+        if (string) {
+            [self.readDataDic setObject:string forKey:characteristic.UUID];
+            if ([string isEqualToString:@"d"]) {
+                [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+            }
+        }else
+        {
+            [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+        }
+        
+        LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
     }else {
-        //LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
+        LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
+        [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
     }
     
-    [self getLasterCharacteristic:peripheral andCharacteristic:characteristic];
     
-    
-    
+//    [self.delegate readDataForString:[NSString stringWithFormat:@"%@",characteristic.value]];
+    //[self getLasterCharacteristic:peripheral andCharacteristic:characteristic];
     
 }
 

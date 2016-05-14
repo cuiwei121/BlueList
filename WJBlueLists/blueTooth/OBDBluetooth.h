@@ -10,14 +10,16 @@
 #import <Foundation/Foundation.h>
 
 @protocol OBDBluetoothDelegate
+
+@optional
 - (void) reloadTableView:(NSMutableArray *) peripheralA andRissArray:(NSMutableArray *)rissArray;
-- (void) checkBlueState:(BOOL)blueState;
 - (void) didConnectPeripheral;
 - (void) didDisconnectPeripheral;
 - (void) didReceiveDataCenter:(NSString *) string;
-
 //设备的连接状态
 - (void)nextVC;
+//读到数据
+- (void)readDataForString:(NSString *)dataString;
 
 @end
 
@@ -35,6 +37,9 @@
 //服务  特征 数组
 @property (nonatomic, strong) NSMutableArray *serCharArray;
 
+//读到的数据 数组
+@property (nonatomic, strong) NSMutableDictionary *readDataDic;
+
 + (OBDBluetooth *)shareOBDBluetooth;
 
 //连接设备
@@ -43,4 +48,15 @@
 - (void)disconnectPeripheral:(CBPeripheral *)peripheral;
 //扫描设备
 - (void)scanPeripheral;
+
+
+//读数据
+- (void)readCharacteristicValue:(CBCharacteristic *)characteristic;
+
+//写数据
+//[self.peripheral writeValue:data forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+- (void)writeValue:(NSString *)writeS andCharacteristic:(CBCharacteristic *)characteristic;
+
+//订阅
+
 @end

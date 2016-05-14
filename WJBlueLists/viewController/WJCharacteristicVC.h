@@ -9,5 +9,6 @@
 #import "WJBaseCV.h"
 
 @interface WJCharacteristicVC : WJBaseCV
+@property (nonatomic, strong) CBCharacteristic *characteristic;
 
 @end

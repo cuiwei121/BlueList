@@ -136,7 +136,7 @@
         }else {
  
             NSMutableArray * mutalbeArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:self.characteristic.UUID];
-            NSString * dataString = [NSString stringWithFormat:@"%@: %@",[NSDate date],[mutalbeArray objectAtIndex:indexPath.row - 1] ];
+            NSString * dataString = [NSString stringWithFormat:@"%@" ,[mutalbeArray objectAtIndex:indexPath.row - 1] ];
             cell.titleLabel.text = dataString;
             cell.titleLabel.font = WJFont(9);
 //            NSString *textS = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
@@ -168,6 +168,7 @@
         if(indexPath.row == 0) {
             [[OBDBluetooth shareOBDBluetooth] readCharacteristicValue:self.characteristic];
 //            [self.baseTableVC reloadData];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         }
         
     }
@@ -184,8 +185,11 @@
 
 - (void)readDataForString {
     LOG(@"特征读数据界面");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.baseTableVC reloadData];
+    });
     
-    [self.baseTableVC reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

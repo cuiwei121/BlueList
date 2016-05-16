@@ -89,6 +89,7 @@
     CBPeripheral *peripheral = [self.tableDataArray objectAtIndex:indexPath.row];
     
     [[OBDBluetooth shareOBDBluetooth]connectPeripheral:peripheral];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 #pragma mark - 蓝牙代理方法
@@ -107,6 +108,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         LOG(@"界面跳转");
          [self.navigationController pushViewController:[[WJServerVC alloc]init] animated:YES];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     });
     
     

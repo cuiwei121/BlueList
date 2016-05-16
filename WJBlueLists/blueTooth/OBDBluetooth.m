@@ -352,7 +352,12 @@
     if (!mutableArray) {
         mutableArray = [NSMutableArray array];
     }
-    [mutableArray addObject:characteristic.value];
+//    
+//    NSString *dateString = [NSString stringWithFormat:@"%@",[NSDate date]];
+//    NSMutableData *data = [NSMutableData dataWithBytes:dateString.UTF8String length:dateString.length];
+//    [data appendData:characteristic.value];
+//    [mutableArray addObject:characteristic.value];
+    [mutableArray insertObject:characteristic.value atIndex:0];
     [self.readDataDic setObject:mutableArray forKey:characteristic.UUID];
     [self.delegate readDataForString];
     //第一次数据处理的写法

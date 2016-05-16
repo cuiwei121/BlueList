@@ -20,14 +20,18 @@
 
 @implementation WJServerVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    [OBDBluetooth shareOBDBluetooth].delegate = self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"服务";
-    [OBDBluetooth shareOBDBluetooth].delegate = self;
-//    if ([OBDBluetooth shareOBDBluetooth].serCharArray) {
-        self.sectonArray = [OBDBluetooth shareOBDBluetooth].peripheral.services;
- 
-//    }
+    
+    self.sectonArray = [OBDBluetooth shareOBDBluetooth].peripheral.services;
+    
     
     //创建头文件  tableview的头
     UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 320)];
@@ -133,6 +137,12 @@
      uuids = FFF2
      uuidData = <fff2>
      */
+    //字符串第二次处理
+    
+    
+    
+    
+    
     //字符串的处理
     NSCharacterSet*set = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
     uuidS = [uuidS  stringByReplacingOccurrencesOfString:@"-" withString:@""];
@@ -148,12 +158,36 @@
 
     NSString *proString =[self propertiesForString: characteristic.properties];
     
-    NSString * valueString = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:characteristic.UUID];
-    if (valueString) {
-        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,valueString];
-    }else {
-        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+    //字符串第二次处理
+    NSMutableArray * mutableArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:characteristic.UUID];
+    if ([mutableArray count] >= 1 ) {
+        NSData * data  = [mutableArray firstObject];
+        if ([data bytes]) {
+            NSString *string = [NSString stringWithUTF8String:[data bytes]];
+            if (string) {
+                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,string];
+            }else {
+                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+            }
+        }else {
+            NSString *string = [NSString stringWithFormat:@"%@",data];
+            if (string) {
+                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,string];
+            }else {
+                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+            }
+        }
+        
+        
     }
+    
+    // //第一次处理字符串  和读到的字符串的格式是相对应的
+//    NSString * valueString = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:characteristic.UUID];
+//    if (valueString) {
+//        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,valueString];
+//    }else {
+//        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+//    }
     //cell.desLabel.text = [NSString stringWithFormat:@"属性：%@ ,%d  %@",proString ,characteristic.properties,valueString];
    
  
@@ -187,6 +221,10 @@
     LOG(@"刷新界面");
     
     
+}
+
+- (void)readDataForString {
+    LOG(@"服务界面 读取到数据的 代理方法");
 }
 
 /*

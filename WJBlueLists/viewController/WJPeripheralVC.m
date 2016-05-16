@@ -113,6 +113,10 @@
 }
 
 
+- (void)readDataForString {
+    LOG(@"读取到数据的 代理方法");
+}
+
 /*
 #pragma mark - Navigation
 

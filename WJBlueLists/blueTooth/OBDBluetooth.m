@@ -347,23 +347,33 @@
         return;
     }
     
-    if ([[characteristic value] bytes] ) {
-        NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
-        if (string) {
-            [self.readDataDic setObject:string forKey:characteristic.UUID];
-            if ([string isEqualToString:@"d"]) {
-                [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
-            }
-        }else
-        {
-            [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
-        }
-        
-        LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
-    }else {
-        LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
-        [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+    // 第二次数据处理的写法 将返回的数据放到数组中 数组存放在字典中
+    NSMutableArray * mutableArray = [self.readDataDic objectForKey:characteristic.UUID];
+    if (!mutableArray) {
+        mutableArray = [NSMutableArray array];
     }
+    [mutableArray addObject:characteristic.value];
+    [self.readDataDic setObject:mutableArray forKey:characteristic.UUID];
+    [self.delegate readDataForString];
+    //第一次数据处理的写法
+//    if ([[characteristic value] bytes] ) {
+//        
+//        NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
+//        if (string) {
+//            [self.readDataDic setObject:string forKey:characteristic.UUID];
+//            if ([string isEqualToString:@"d"]) {
+//                [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+//            }
+//        }else
+//        {
+//            [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+//        }
+//        
+//        LOG(@"Received data on a characteristic. === %@   ==%@",[characteristic value],string);
+//    }else {
+//        LOG(@"Received data on a characteristic. === %@    ",[characteristic value]);
+//        [self.readDataDic setObject:[characteristic value] forKey:characteristic.UUID];
+//    }
     
     
 //    [self.delegate readDataForString:[NSString stringWithFormat:@"%@",characteristic.value]];

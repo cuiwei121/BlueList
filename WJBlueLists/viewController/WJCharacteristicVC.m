@@ -10,18 +10,22 @@
 #import "OBDBluetooth.h"
 #import "WJPeripheralCell.h"
 
-@interface WJCharacteristicVC ()
+@interface WJCharacteristicVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSMutableArray *sectionTitleArray;
 
 @end
 
 @implementation WJCharacteristicVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    [OBDBluetooth shareOBDBluetooth].delegate = self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"特征";
- 
-    
     //创建头文件  tableview的头
     UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 320)];
     //    sectionView.backgroundColor = [UIColor orangeColor];
@@ -93,11 +97,24 @@
 //    return [service.characteristics count];
     
     if (section < [self.sectionTitleArray count] - 1) {
+        if ([[self.sectionTitleArray objectAtIndex: section] isEqualToString:@"读数据"]) {
+            
+            NSMutableArray * mutalbeArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:self.characteristic.UUID];
+            return [mutalbeArray count] + 1 ;
+            
+        }
+        if ([[self.sectionTitleArray objectAtIndex: section] isEqualToString:@"写数据"]) {
+            
+            return 2;
+        }
+        
         return 2;
     }else {
         return [self.sectionTitleArray count] - 1;
     }
     
+    
+
 }
 
 
@@ -113,11 +130,18 @@
     }
     
     if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"读数据"]) {
-        
+    
         if(indexPath.row == 0) {
             cell.titleLabel.text = @"读取数据";
         }else {
-            
+ 
+            NSMutableArray * mutalbeArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:self.characteristic.UUID];
+            NSString * dataString = [NSString stringWithFormat:@"%@: %@",[NSDate date],[mutalbeArray objectAtIndex:indexPath.row - 1] ];
+            cell.titleLabel.text = dataString;
+            cell.titleLabel.font = WJFont(9);
+//            NSString *textS = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
+//            cell.titleLabel.text = [NSString stringWithFormat:@"%@",textS];
+            LOG(@"读取数据=======: %@  == %@",[[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID],dataString);
         }
         
     }
@@ -125,8 +149,11 @@
     if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"写数据"]) {
         if(indexPath.row == 0) {
             cell.titleLabel.text = @"写入数据";
-        }else {
-//            cell.titleLabel.text = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
+        }else if(indexPath.row == 1){
+            cell.titleLabel.text = @"1234";
+//            NSString *textS = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
+//            cell.titleLabel.text = [NSString stringWithFormat:@"%@",textS];
+//            LOG(@"写入数据=======: %@   == %@",[[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID],textS);
         }
         
     }
@@ -140,7 +167,7 @@
         
         if(indexPath.row == 0) {
             [[OBDBluetooth shareOBDBluetooth] readCharacteristicValue:self.characteristic];
-            [self.baseTableVC reloadData];
+//            [self.baseTableVC reloadData];
         }
         
     }
@@ -155,7 +182,11 @@
     
 }
 
-
+- (void)readDataForString {
+    LOG(@"特征读数据界面");
+    
+    [self.baseTableVC reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

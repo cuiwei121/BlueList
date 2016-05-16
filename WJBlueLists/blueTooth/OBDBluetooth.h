@@ -19,7 +19,7 @@
 //设备的连接状态
 - (void)nextVC;
 //读到数据
-- (void)readDataForString:(NSString *)dataString;
+- (void)readDataForString;
 
 @end
 

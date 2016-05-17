@@ -27,4 +27,15 @@
  */
 - (void)tableViewFrame:(CGRect)frame;
 
+/**
+ *navigation 上返回按钮
+ */
+-(void)setBarItem;
+
+
+/**
+ *navigation 上返回按钮的点击事件
+ */
+-(void)onClick:(id)sender;
+
 @end

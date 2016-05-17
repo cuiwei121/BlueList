@@ -28,15 +28,18 @@
 
 - (void)createCellView {
     _nameLabel = [[UILabel alloc]init];
-    _nameLabel.font = WJFont(15);
+//    _nameLabel.font = WJFont(15);
+    //字体的大小随 labe的宽度变化
+    _nameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:_nameLabel];
     
     _desLabel = [[UILabel alloc]init];
     _desLabel.font = WJFont(10);
+//    _desLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:_desLabel];
     
-    _nameLabel.frame = CGRectMake(10, 0, SCREEN_WIDTH - 10, 40);
-    _desLabel.frame = CGRectMake(10, 40, SCREEN_WIDTH - 10, 20);
+    _nameLabel.frame = CGRectMake(10, 0, SCREEN_WIDTH - 15, 40);
+    _desLabel.frame = CGRectMake(10, 40, SCREEN_WIDTH - 15, 20);
     
     
     

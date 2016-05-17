@@ -41,8 +41,9 @@
     
     _identifierLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_identifierLabel];
-    _identifierLabel.frame = CGRectMake(40, 40, SCREEN_WIDTH - 20, 20);
-    _identifierLabel.font = [UIFont systemFontOfSize:13];
+    _identifierLabel.frame = CGRectMake(40, 40, SCREEN_WIDTH - 45, 20);
+//    _identifierLabel.font = [UIFont systemFontOfSize:13];
+    _identifierLabel.adjustsFontSizeToFitWidth = YES;
     
     _rissLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_rissLabel];

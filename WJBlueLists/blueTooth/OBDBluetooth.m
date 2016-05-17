@@ -143,7 +143,8 @@
 
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    
+    [self.delegate didDisconnectPeripheral];
+
     LOG(@"Did disconnect peripheral %@", peripheral.name);
     
 }
@@ -158,7 +159,7 @@
 
 - (void)disconnectPeripheral:(CBPeripheral *)peripheral {
     //主动断开连接
-    [self.centerManager cancelPeripheralConnection:peripheral];
+    [self.centerManager cancelPeripheralConnection:self.peripheral];
 }
 
 //扫描设备
@@ -330,7 +331,7 @@
     for (CBCharacteristic *c in [service characteristics])
     {
      
-        //        [self.peripheral setNotifyValue:YES forCharacteristic:c];
+//                [self.peripheral setNotifyValue:YES forCharacteristic:c];
         [self.peripheral readValueForCharacteristic:c];
         
         //        LOG(@"CBCharacteristicCBCharacteristicCBCharacteristic g characteristics: %@    uuid =  %@  %@", c,c.UUID.data,c.UUID);

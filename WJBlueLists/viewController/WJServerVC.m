@@ -34,19 +34,26 @@
     
     
     //创建头文件  tableview的头
-    UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 320)];
+    UIView * sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 80)];
 //    sectionView.backgroundColor = [UIColor orangeColor];
     UILabel * label = [[UILabel alloc]init];
-    label.frame = CGRectMake(0, 0, SCREEN_WIDTH, 320);
+    label.frame = CGRectMake(10, 0, SCREEN_WIDTH - 15, 80);
     label.numberOfLines = 0;
-    label.text = [NSString stringWithFormat:@"%@\n%@",[OBDBluetooth shareOBDBluetooth].peripheral.name,[OBDBluetooth shareOBDBluetooth].peripheral];
+    label.text = [NSString stringWithFormat:@"设备名: %@\nUUID: %@",[OBDBluetooth shareOBDBluetooth].peripheral.name,[OBDBluetooth shareOBDBluetooth].peripheral.identifier.UUIDString];
     
     [sectionView addSubview:label];
     [self.baseTableVC setTableHeaderView:sectionView];
-    
+    [self setBarItem];
     
     // Do any additional setup after loading the view.
 }
+
+- (void)onClick:(id)sender {
+    [[OBDBluetooth shareOBDBluetooth] disconnectPeripheral:nil];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+}
+
 
 #pragma mark - 属性
 - (NSArray *)sectonArray {
@@ -221,6 +228,13 @@
     LOG(@"刷新界面");
     
     
+}
+
+- (void)didDisconnectPeripheral {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    });
 }
 
 - (void)readDataForString {

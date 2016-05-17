@@ -364,7 +364,9 @@
 //    NSMutableData *data = [NSMutableData dataWithBytes:dateString.UTF8String length:dateString.length];
 //    [data appendData:characteristic.value];
 //    [mutableArray addObject:characteristic.value];
-    [mutableArray insertObject:characteristic.value atIndex:0];
+    if ([[NSString stringWithFormat:@"%@",characteristic.value] length] >= 3) {
+       [mutableArray insertObject:characteristic.value atIndex:0];
+    }
     [self.readDataDic setObject:mutableArray forKey:characteristic.UUID];
     [self.delegate readDataForString];
     //第一次数据处理的写法

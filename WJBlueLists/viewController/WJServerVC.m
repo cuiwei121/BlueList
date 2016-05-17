@@ -129,7 +129,7 @@
     //uuid
     NSString *uuidData = [NSString stringWithFormat:@"%@",characteristic.UUID.data];
     NSString *uuidS = [NSString stringWithFormat:@"%@",characteristic.UUID];
-    LOG(@"uuids = %@ \n uuidData = %@ ",uuidS,uuidData);
+    //LOG(@"uuids = %@ \n uuidData = %@ ",uuidS,uuidData);
 
     /*
      1,
@@ -167,6 +167,7 @@
     
     //字符串第二次处理
     NSMutableArray * mutableArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:characteristic.UUID];
+    LOG(@"uuisd = %@  array = %@  row = %d",characteristic.UUID, mutableArray, indexPath.row);
     if ([mutableArray count] >= 1 ) {
         NSData * data  = [mutableArray firstObject];
         if ([data bytes]) {
@@ -174,18 +175,20 @@
             if (string) {
                 cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,string];
             }else {
-                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@ %@",proString,[NSString stringWithFormat:@"%@",data]];
             }
         }else {
-            NSString *string = [NSString stringWithFormat:@"%@",data];
-            if (string) {
-                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,string];
-            }else {
-                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
-            }
+//            NSString *string = [NSString stringWithFormat:@"%@",data];
+//            if (string) {
+//                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@  %@",proString ,string];
+//            }else {
+//                cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
+//            }
+            cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
         }
         
-        
+    }else {
+        cell.desLabel.text = [NSString stringWithFormat:@"属性：%@",proString];
     }
     
     // //第一次处理字符串  和读到的字符串的格式是相对应的

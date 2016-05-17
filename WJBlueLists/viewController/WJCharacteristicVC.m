@@ -9,6 +9,7 @@
 #import "WJCharacteristicVC.h"
 #import "OBDBluetooth.h"
 #import "WJPeripheralCell.h"
+#import "WJCharacteristicCell.h"
 
 @interface WJCharacteristicVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSMutableArray *sectionTitleArray;
@@ -121,23 +122,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *identifier = @"peripheralCell";
-    WJPeripheralCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    WJCharacteristicCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[WJPeripheralCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[WJCharacteristicCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"特征属性值"]) {
-        cell.titleLabel.text = [self.sectionTitleArray objectAtIndex:indexPath.row];
+        cell.textDataLabel.text = [self.sectionTitleArray objectAtIndex:indexPath.row];
     }
     
     if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"读数据"]) {
     
         if(indexPath.row == 0) {
-            cell.titleLabel.text = @"读取数据";
+            cell.textDataLabel.text = @"读取数据";
         }else {
  
             NSMutableArray * mutalbeArray = [[OBDBluetooth shareOBDBluetooth].readDataDic objectForKey:self.characteristic.UUID];
             NSString * dataString = [NSString stringWithFormat:@"%@" ,[mutalbeArray objectAtIndex:indexPath.row - 1] ];
-            cell.titleLabel.text = dataString;
+            cell.textDataLabel.text = dataString;
 //            cell.titleLabel.font = WJFont(9);
 //            NSString *textS = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
 //            cell.titleLabel.text = [NSString stringWithFormat:@"%@",textS];
@@ -148,9 +149,9 @@
     
     if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"写数据"]) {
         if(indexPath.row == 0) {
-            cell.titleLabel.text = @"写入数据";
+            cell.textDataLabel.text = @"写入数据";
         }else if(indexPath.row == 1){
-            cell.titleLabel.text = @"1234";
+            cell.textDataLabel.text = @"1234";
 //            NSString *textS = [[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID];
 //            cell.titleLabel.text = [NSString stringWithFormat:@"%@",textS];
 //            LOG(@"写入数据=======: %@   == %@",[[[OBDBluetooth shareOBDBluetooth]readDataDic]objectForKey:self.characteristic.UUID],textS);

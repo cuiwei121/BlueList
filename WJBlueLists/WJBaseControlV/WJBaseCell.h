@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WJBaseCell : UITableViewCell
-
+@property (nonatomic, strong) UIImageView *arrowImageV;
 @end

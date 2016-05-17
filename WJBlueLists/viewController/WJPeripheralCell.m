@@ -32,16 +32,17 @@
     [self.contentView addSubview:_titleLabel];
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.right.equalTo(self.contentView);
+        make.top.equalTo(self.contentView).offset(5);
         make.left.equalTo(self.contentView).offset(40);
-        make.height.equalTo(@40);
+        make.right.equalTo(self.contentView).offset(-20);
+        make.height.equalTo(@35);
     }];
     _titleLabel.font = [UIFont systemFontOfSize:20];
     
     
     _identifierLabel = [[UILabel alloc]init];
     [self.contentView addSubview:_identifierLabel];
-    _identifierLabel.frame = CGRectMake(40, 40, SCREEN_WIDTH - 45, 20);
+    _identifierLabel.frame = CGRectMake(40, 35, SCREEN_WIDTH - 60, 20);
 //    _identifierLabel.font = [UIFont systemFontOfSize:13];
     _identifierLabel.adjustsFontSizeToFitWidth = YES;
     
@@ -50,6 +51,10 @@
     _rissLabel.frame = CGRectMake(10, 40, 30, 20);
     _rissLabel.font = [UIFont systemFontOfSize:13];
     
+    
+    _titleLabel.textColor = [UIColor colorWithHexString:@"3d3d3d"];
+    _identifierLabel.textColor = [UIColor colorWithHexString:@"3d3d3d"];
+    _rissLabel.textColor = [UIColor colorWithHexString:@"3d3d3d"];
 }
 
 @end

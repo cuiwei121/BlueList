@@ -26,6 +26,8 @@
 		24CD144F1CD9B2C500E19F1B /* WJBaseCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */; };
 		24EA438D1CE1BAD000DC1C57 /* WJServerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */; };
 		24F962C81CEAF4B2007973CA /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C71CEAF4B2007973CA /* back.png */; };
+		24F962CA1CEAFF15007973CA /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C91CEAFF15007973CA /* rightArrow.png */; };
+		24F962CD1CEB0605007973CA /* WJCharacteristicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F962CC1CEB0605007973CA /* WJCharacteristicCell.m */; };
 		D1B3546C1E34E30EF73EE360 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51CD05A38C923D2E889C4936 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,9 @@
 		24EA438B1CE1BAD000DC1C57 /* WJServerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJServerVC.h; sourceTree = "<group>"; };
 		24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJServerVC.m; sourceTree = "<group>"; };
 		24F962C71CEAF4B2007973CA /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		24F962C91CEAFF15007973CA /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
+		24F962CB1CEB0605007973CA /* WJCharacteristicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJCharacteristicCell.h; sourceTree = "<group>"; };
+		24F962CC1CEB0605007973CA /* WJCharacteristicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJCharacteristicCell.m; sourceTree = "<group>"; };
 		51CD05A38C923D2E889C4936 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B46E26F69C18F8B79F6080 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B7C49C649E9AB5B25F3E8F18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +134,8 @@
 				24B9F3A71CE46A6A0032EAA4 /* WJServerCell.m */,
 				24243BE01CE5CEF60005BA55 /* WJCharacteristicVC.h */,
 				24243BE11CE5CEF60005BA55 /* WJCharacteristicVC.m */,
+				24F962CB1CEB0605007973CA /* WJCharacteristicCell.h */,
+				24F962CC1CEB0605007973CA /* WJCharacteristicCell.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 		24F962C61CEAF46A007973CA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				24F962C91CEAFF15007973CA /* rightArrow.png */,
 				24F962C71CEAF4B2007973CA /* back.png */,
 			);
 			path = Resource;
@@ -367,6 +375,7 @@
 			files = (
 				24CD14211CD9A2C200E19F1B /* LaunchScreen.storyboard in Resources */,
 				24CD141E1CD9A2C200E19F1B /* Assets.xcassets in Resources */,
+				24F962CA1CEAFF15007973CA /* rightArrow.png in Resources */,
 				24F962C81CEAF4B2007973CA /* back.png in Resources */,
 				24CD141C1CD9A2C200E19F1B /* Main.storyboard in Resources */,
 			);
@@ -444,6 +453,7 @@
 				24CD144F1CD9B2C500E19F1B /* WJBaseCV.m in Sources */,
 				2406C5211CE033A100AF6102 /* WJPeripheralCell.m in Sources */,
 				24CD144A1CD9A31B00E19F1B /* OBDBluetooth.m in Sources */,
+				24F962CD1CEB0605007973CA /* WJCharacteristicCell.m in Sources */,
 				24B9F3A51CE466410032EAA4 /* UIColor+WJColor.m in Sources */,
 				2406C51B1CE02F9B00AF6102 /* WJPeripheralVC.m in Sources */,
 				24B9F3A81CE46A6A0032EAA4 /* WJServerCell.m in Sources */,

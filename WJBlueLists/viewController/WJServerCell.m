@@ -38,11 +38,12 @@
 //    _desLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:_desLabel];
     
-    _nameLabel.frame = CGRectMake(10, 0, SCREEN_WIDTH - 15, 40);
-    _desLabel.frame = CGRectMake(10, 40, SCREEN_WIDTH - 15, 20);
+    _nameLabel.frame = CGRectMake(10, 5, SCREEN_WIDTH - 35, 35);
+    _desLabel.frame = CGRectMake(10, 35, SCREEN_WIDTH - 35, 20);
     
     
-    
+    _nameLabel.textColor = [UIColor colorWithHexString:@"3d3d3d"];
+    _desLabel.textColor = [UIColor colorWithHexString:@"3d3d3d"];
 //    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.equalTo(self.contentView).offset(10);
 //        make.bottom.equalTo(self.contentView.mas_centerX).offset(10);

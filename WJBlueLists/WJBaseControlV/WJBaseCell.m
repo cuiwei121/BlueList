@@ -28,7 +28,7 @@
         
         
         UIView *lineView = [[UIView alloc]init];
-        lineView.backgroundColor = [UIColor lightGrayColor];
+        lineView.backgroundColor = [UIColor colorWithHexString:@"c3c3c3"];
         [self.contentView addSubview:lineView];
         
         [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -36,6 +36,17 @@
             make.left.equalTo(self.contentView).offset(10);
             make.height.equalTo(@1);
         }];
+        
+        
+        _arrowImageV = [[UIImageView alloc]init];
+        [self.contentView addSubview:_arrowImageV];
+        _arrowImageV.image = [UIImage imageNamed:@"rightArrow"];
+        [_arrowImageV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.width.equalTo(@12);
+            make.centerY.equalTo(self.contentView);
+            make.right.equalTo(self.contentView).offset(-10);
+        }];
+        
         
     }
     return self;

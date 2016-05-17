@@ -80,6 +80,9 @@
             LOG(@"请打开蓝牙");
             //断开连接
             [self.delegate didDisconnectPeripheral];
+            //设备断开后要 清除读取到的数据
+            [self.readDataDic removeAllObjects];
+            
             //蓝牙状态
             self.blueConnectState = NO;
             self.blueState = NO;
@@ -144,6 +147,9 @@
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     [self.delegate didDisconnectPeripheral];
+    
+    //设备断开后要 清除读取到的数据
+    [self.readDataDic removeAllObjects];
 
     LOG(@"Did disconnect peripheral %@", peripheral.name);
     

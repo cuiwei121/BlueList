@@ -56,10 +56,10 @@
     [self.sectionTitleArray removeAllObjects];
     
     if (self.characteristic.properties & CBCharacteristicPropertyRead) {
-        [self.sectionTitleArray addObject:@"读数据"];
+        [self.sectionTitleArray addObject:@"可读"];
     }
     if (self.characteristic.properties & CBCharacteristicPropertyWrite) {
-        [self.sectionTitleArray addObject:@"写数据"];
+        [self.sectionTitleArray addObject:@"可写"];
     }
     if (self.characteristic.properties & CBCharacteristicPropertyWriteWithoutResponse) {
         [self.sectionTitleArray addObject:@"写无回复"];

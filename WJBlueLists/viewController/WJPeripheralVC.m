@@ -13,6 +13,7 @@
 
 @interface WJPeripheralVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSMutableArray *rissArray;
+@property (nonatomic, strong) UILabel *noPeripheralView;
 
 @end
 
@@ -21,12 +22,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //每次显示界面  重新设置代理  扫描设别
     [OBDBluetooth shareOBDBluetooth].delegate = self;
+    [[OBDBluetooth shareOBDBluetooth] scanPeripheral];
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
+    
+    //在没有搜索到设备的时候  提示用户没有搜索到设备
+    _noPeripheralView  = [[UILabel alloc]initWithFrame:self.view.frame];
+    _noPeripheralView.text = @"亲\n\n搜索不到设备！\n\n请打开您要连接的设备";
+    _noPeripheralView.font = WJFont(25);
+    _noPeripheralView.textAlignment = NSTextAlignmentCenter;
+    _noPeripheralView.numberOfLines = 0;
+    [self.view addSubview:_noPeripheralView];
     
 }
 
@@ -37,20 +50,6 @@
 
 
 #pragma mark - 属相 懒加载
-//- (UITableView *)peripheresTableVC {
-//    
-//    if (!_peripheresTableVC) {
-//        _peripheresTableVC = [[UITableView alloc]init];
-//        _peripheresTableVC.dataSource = self;
-//        _peripheresTableVC.delegate = self;
-//        _peripheresTableVC.separatorStyle = UITableViewCellAccessoryNone;
-//        [self.view addSubview:_peripheresTableVC];
-//        _peripheresTableVC.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        
-//    }
-//    
-//    return _peripheresTableVC;
-//}
 
 - (NSMutableArray *)rissArray {
     if (!_rissArray) {
@@ -75,7 +74,7 @@
     
     cell.titleLabel.text = peripheral.name;
     //peripheral.identifier.UUIDString
-//    NSString *idenfirierS = [NSString stringWithFormat:@"%d服务",[peripheral.services count]];
+    //    NSString *idenfirierS = [NSString stringWithFormat:@"%d服务",[peripheral.services count]];
     cell.identifierLabel.text =  peripheral.identifier.UUIDString;
     cell.rissLabel.text = [NSString stringWithFormat:@"%@",[self.rissArray objectAtIndex:indexPath.row]];
     
@@ -98,6 +97,12 @@
     self.tableDataArray = peripheralA;
     self.rissArray = rissArray;
     dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self.tableDataArray count] > 0) {
+            _noPeripheralView.hidden = YES;
+        }else {
+            _noPeripheralView.hidden = NO;
+        }
+        
          [self.baseTableVC reloadData];
     });
     

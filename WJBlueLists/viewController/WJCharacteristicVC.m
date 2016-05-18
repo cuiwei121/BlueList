@@ -174,23 +174,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"读数据"]) {
-        
-        if(indexPath.row == 0) {
-            [[OBDBluetooth shareOBDBluetooth] readCharacteristicValue:self.characteristic];
+//    if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"读数据"]) {
+//        
+//        if(indexPath.row == 0) {
+//            [[OBDBluetooth shareOBDBluetooth] readCharacteristicValue:self.characteristic];
+////            [self.baseTableVC reloadData];
+//            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        }
+//        
+//    }
+//    
+//    if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"写数据"]) {
+//        if(indexPath.row == 0) {
+//            [[OBDBluetooth shareOBDBluetooth]writeValue:@"66" andCharacteristic:self.characteristic];
 //            [self.baseTableVC reloadData];
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        }
-        
-    }
+//        }
+//        
+//    }
     
-    if ([[self.sectionTitleArray objectAtIndex:indexPath.section] isEqualToString:@"写数据"]) {
-        if(indexPath.row == 0) {
-            [[OBDBluetooth shareOBDBluetooth]writeValue:@"66" andCharacteristic:self.characteristic];
-            [self.baseTableVC reloadData];
-        }
-        
-    }
+     if ((self.characteristic.properties & CBCharacteristicPropertyRead) && (indexPath.section == 0)) {
+         if(indexPath.row == 0) {
+             [[OBDBluetooth shareOBDBluetooth] readCharacteristicValue:self.characteristic];
+             //            [self.baseTableVC reloadData];
+             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+         }
+     }
+    
     
 }
 
@@ -201,6 +210,13 @@
         [self.baseTableVC reloadData];
     });
     
+}
+
+
+- (void)didDisconnectPeripheral {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

@@ -110,7 +110,7 @@
  */
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    //LOG(@"Did discover peripheral %@  \n advertisementDATA = %@", peripheral.name,advertisementData);
+//    LOG(@"Did discover peripheral %@  \n advertisementDATA = %@", peripheral.name,advertisementData);
     
     //判断数组中是否有设备
     NSInteger index = [self.peripherals indexOfObject:peripheral];
@@ -144,13 +144,19 @@
     
 }
 
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
+    //链接失败
+    [self.delegate didDisconnectPeripheral];
+}
+
+
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     [self.delegate didDisconnectPeripheral];
     
     //设备断开后要 清除读取到的数据
     [self.readDataDic removeAllObjects];
-
+    [self scanPeripheral];
     LOG(@"Did disconnect peripheral %@", peripheral.name);
     
 }

@@ -25,6 +25,7 @@
 		24CD144A1CD9A31B00E19F1B /* OBDBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14481CD9A31B00E19F1B /* OBDBluetooth.m */; };
 		24CD144F1CD9B2C500E19F1B /* WJBaseCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */; };
 		24DB8FB41CEC516400700644 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DB8FB31CEC516400700644 /* GoogleMobileAds.framework */; };
+		24DB8FB61CEC6D5900700644 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 24DB8FB51CEC6D5900700644 /* bluetooth.png */; };
 		24EA438D1CE1BAD000DC1C57 /* WJServerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */; };
 		24F962C81CEAF4B2007973CA /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C71CEAF4B2007973CA /* back.png */; };
 		24F962CA1CEAFF15007973CA /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C91CEAFF15007973CA /* rightArrow.png */; };
@@ -86,6 +87,7 @@
 		24CD144D1CD9B2C500E19F1B /* WJBaseCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJBaseCV.h; sourceTree = "<group>"; };
 		24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJBaseCV.m; sourceTree = "<group>"; };
 		24DB8FB31CEC516400700644 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		24DB8FB51CEC6D5900700644 /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
 		24EA438B1CE1BAD000DC1C57 /* WJServerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJServerVC.h; sourceTree = "<group>"; };
 		24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJServerVC.m; sourceTree = "<group>"; };
 		24F962C71CEAF4B2007973CA /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		24F962C61CEAF46A007973CA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				24DB8FB51CEC6D5900700644 /* bluetooth.png */,
 				24F962C91CEAFF15007973CA /* rightArrow.png */,
 				24F962C71CEAF4B2007973CA /* back.png */,
 			);
@@ -377,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24DB8FB61CEC6D5900700644 /* bluetooth.png in Resources */,
 				24CD14211CD9A2C200E19F1B /* LaunchScreen.storyboard in Resources */,
 				24CD141E1CD9A2C200E19F1B /* Assets.xcassets in Resources */,
 				24F962CA1CEAFF15007973CA /* rightArrow.png in Resources */,

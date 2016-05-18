@@ -10,6 +10,7 @@
 #import "WJPeripheralCell.h"
 #import "OBDBluetooth.h"
 #import "WJServerVC.h"
+ 
 
 @interface WJPeripheralVC ()<OBDBluetoothDelegate>
 @property (nonatomic, strong) NSMutableArray *rissArray;
@@ -40,6 +41,10 @@
     _noPeripheralView.textAlignment = NSTextAlignmentCenter;
     _noPeripheralView.numberOfLines = 0;
     [self.view addSubview:_noPeripheralView];
+ 
+    
+   
+  
     
 }
 

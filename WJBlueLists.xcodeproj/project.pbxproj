@@ -24,6 +24,7 @@
 		24CD14491CD9A31B00E19F1B /* BluetoothPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14461CD9A31B00E19F1B /* BluetoothPeripheral.m */; };
 		24CD144A1CD9A31B00E19F1B /* OBDBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD14481CD9A31B00E19F1B /* OBDBluetooth.m */; };
 		24CD144F1CD9B2C500E19F1B /* WJBaseCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */; };
+		24DB8FB41CEC516400700644 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DB8FB31CEC516400700644 /* GoogleMobileAds.framework */; };
 		24EA438D1CE1BAD000DC1C57 /* WJServerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */; };
 		24F962C81CEAF4B2007973CA /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C71CEAF4B2007973CA /* back.png */; };
 		24F962CA1CEAFF15007973CA /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F962C91CEAFF15007973CA /* rightArrow.png */; };
@@ -84,6 +85,7 @@
 		24CD144B1CD9A3A600E19F1B /* blue_per.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blue_per.pch; sourceTree = "<group>"; };
 		24CD144D1CD9B2C500E19F1B /* WJBaseCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJBaseCV.h; sourceTree = "<group>"; };
 		24CD144E1CD9B2C500E19F1B /* WJBaseCV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJBaseCV.m; sourceTree = "<group>"; };
+		24DB8FB31CEC516400700644 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		24EA438B1CE1BAD000DC1C57 /* WJServerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJServerVC.h; sourceTree = "<group>"; };
 		24EA438C1CE1BAD000DC1C57 /* WJServerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJServerVC.m; sourceTree = "<group>"; };
 		24F962C71CEAF4B2007973CA /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24DB8FB41CEC516400700644 /* GoogleMobileAds.framework in Frameworks */,
 				D1B3546C1E34E30EF73EE360 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +256,7 @@
 		A5F35C8B72FD6EBCF66CB0BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24DB8FB31CEC516400700644 /* GoogleMobileAds.framework */,
 				51CD05A38C923D2E889C4936 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -605,6 +609,10 @@
 			baseConfigurationReference = B7C49C649E9AB5B25F3E8F18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WJBlueLists/blue_per.pch";
 				INFOPLIST_FILE = WJBlueLists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -619,6 +627,10 @@
 			baseConfigurationReference = 68B46E26F69C18F8B79F6080 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WJBlueLists/blue_per.pch";
 				INFOPLIST_FILE = WJBlueLists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

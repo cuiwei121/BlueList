@@ -8,9 +8,10 @@
 
 #import "WJBaseCV.h"
 #import "WJBaseCell.h"
+@import GoogleMobileAds;
 
 @interface WJBaseCV ()<UITableViewDataSource,UITableViewDelegate>
-
+@property (nonatomic, strong) GADBannerView  *bottomView;
 @end
 
 @implementation WJBaseCV
@@ -21,7 +22,22 @@
     
     [self tableViewFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT )];
    
+    //tableview 的footview
+    UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    self.baseTableVC.tableFooterView = footView;
     
+    
+    LOG(@"google version = %@", [GADRequest sdkVersion]);
+    _bottomView = [[GADBannerView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
+    [self.view addSubview:_bottomView];
+    
+    self.bottomView .adUnitID = @"ca-app-pub-3469552292226288/9081240452";
+    self.bottomView .rootViewController = self;
+//        GADRequest *request = [GADRequest request];
+//        request.testDevices = @[
+//                                @"281aa25148dd68a8a1202b620799c3ce"  // Eric's iPod Touch
+//                                ];
+    [self.bottomView  loadRequest:[GADRequest request]];
 }
 
 #pragma mark - 属相 懒加载

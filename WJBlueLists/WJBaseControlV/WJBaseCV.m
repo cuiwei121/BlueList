@@ -33,10 +33,10 @@
     
     self.bottomView .adUnitID = @"ca-app-pub-3469552292226288/9081240452";
     self.bottomView .rootViewController = self;
-//        GADRequest *request = [GADRequest request];
-//        request.testDevices = @[
-//                                @"281aa25148dd68a8a1202b620799c3ce"  // Eric's iPod Touch
-//                                ];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[
+                            @"281aa25148dd68a8a1202b620799c3ce"  // Eric's iPod Touch
+                            ];
     [self.bottomView  loadRequest:[GADRequest request]];
 }
 

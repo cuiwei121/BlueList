@@ -31,13 +31,13 @@
     _bottomView = [[GADBannerView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
     [self.view addSubview:_bottomView];
     //ca-app-pub-3469552292226288/9081240452
-    self.bottomView .adUnitID = @"ca-app-pub-3469552292226288/9081240452";
-    self.bottomView .rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    request.testDevices = @[
-                            @"281aa25148dd68a8a1202b620799c3ce"  // Eric's iPod Touch
-                            ];
-    [self.bottomView  loadRequest:[GADRequest request]];
+//    self.bottomView .adUnitID = @"ca-app-pub-3469552292226288/9081240452";
+//    self.bottomView .rootViewController = self;
+//    GADRequest *request = [GADRequest request];
+//    request.testDevices = @[
+//                            @"281aa25148dd68a8a1202b620799c3ce"  // Eric's iPod Touch
+//                            ];
+//    [self.bottomView  loadRequest:[GADRequest request]];
 }
 
 #pragma mark - 属相 懒加载

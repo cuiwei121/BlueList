@@ -30,7 +30,7 @@
     LOG(@"google version = %@", [GADRequest sdkVersion]);
     _bottomView = [[GADBannerView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
     [self.view addSubview:_bottomView];
-    
+    //ca-app-pub-3469552292226288/9081240452
     self.bottomView .adUnitID = @"ca-app-pub-3469552292226288/9081240452";
     self.bottomView .rootViewController = self;
     GADRequest *request = [GADRequest request];
